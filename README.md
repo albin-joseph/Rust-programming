@@ -69,3 +69,15 @@ Hello, world!
     cd <project_name>
     cargo build --release
     ```
+
+#### Data Types
+
+Rust is a static typed language. We have different type primitive and non premitive data types
+
+    - **Primitive Data types **
+        - Int
+            - Integeres signed and unsigned integers in different ranges
+            - signed integers: i8, i16, i32, etc
+            - unsigned integers: u8, u16, u32, etc
+        - float
+        - char
