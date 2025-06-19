@@ -73,11 +73,18 @@ Hello, world!
 #### Data Types
 
 Rust is a static typed language. We have different type primitive and non premitive data types
+- **Primitive Data types**
+- Int
+    - Integeres signed and unsigned integers in different ranges
+    - signed integers: i8, i16, i32, etc
+    - unsigned integers: u8, u16, u32, etc
+            
+- float
+    - float represents numbers with fractional parts
+    - we have two type floats f32 & f64
+- boolean
+    - boolean values have two values either true or false
+- char
+    - it represent sigle scalar value eg: a, b, etc
 
-    - **Primitive Data types **
-        - Int
-            - Integeres signed and unsigned integers in different ranges
-            - signed integers: i8, i16, i32, etc
-            - unsigned integers: u8, u16, u32, etc
-        - float
-        - char
+    
