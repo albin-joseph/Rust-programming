@@ -51,5 +51,13 @@ fn main() {
      let books_slices: &[&String] = &[&"elephent".to_string(), &"horse".to_string(), &"cow".to_string()];
     println!("Books Slices: {:?}", books_slices);
 
+    //String vs String Slices (&str)
+    let mut stone_cold: String = String::from("Hello, ");
+    println!("Stone Cold syas: {}", stone_cold);
+
+    stone_cold.push_str("Yeah!");
+
+     println!("Stone Cold syas: {}", stone_cold);
+
 
 }
