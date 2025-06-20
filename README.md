@@ -476,3 +476,56 @@ fn calculate_area(width: u32, height: u32) -> u32 {
 3. **Return `Result<T, E>`** for functions that can fail
 4. **Use generics** to write flexible, reusable functions
 5. **Document public functions** with `///` comments
+
+## Rust Memory Management Snapshot
+
+### 🏠 Ownership
+Each value has exactly one owner. When owner goes out of scope, value is dropped.
+```rust
+let s1 = String::from("hello");
+let s2 = s1; // s1 moved to s2, s1 no longer valid
+```
+
+### 📝 Borrowing & References
+Use values without taking ownership via references (`&` and `&mut`).
+
+#### Immutable Reference
+```rust
+fn get_length(s: &String) -> usize { s.len() }
+let s = String::from("hello");
+let len = get_length(&s); // s still valid after call
+```
+
+#### Mutable Reference
+```rust
+fn append_world(s: &mut String) { s.push_str(" world"); }
+let mut s = String::from("hello");
+append_world(&mut s);
+```
+
+### 🔒 Borrowing Rules
+- **One mutable reference** OR **any number of immutable references** at a time
+- References must always be valid (no dangling pointers)
+
+```rust
+let mut s = String::from("hello");
+let r1 = &s;     // OK - immutable
+let r2 = &s;     // OK - multiple immutable
+// let r3 = &mut s; // ERROR - can't mix mutable with immutable
+```
+
+### 📊 Copy vs Move Types
+- **Copy types** (i32, bool, char): Copied on assignment
+- **Move types** (String, Vec): Ownership transferred on assignment
+
+```rust
+let x = 5; let y = x;        // x copied, both valid
+let s1 = String::from("hi"); // s1 moved, only s2 valid
+let s2 = s1;
+```
+
+### 🎯 Key Benefits
+- **Memory safety** without garbage collection
+- **Zero-cost abstractions** - no runtime overhead
+- **Compile-time checks** prevent dangling pointers, double-free errors
+- **Predictable performance** - know exactly when memory is freed
