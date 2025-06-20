@@ -37,7 +37,10 @@ fn main() {
     account.check_balance();
 
     //Mutable borrow to withdraw money
-    account.withdraw(45.50)
+    account.withdraw(45.50);
+
+     //Immutable borrow to check balance
+    account.check_balance();
 
 }
 
