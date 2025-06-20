@@ -252,9 +252,8 @@ let z = 42u64;        // Type suffix
 ```
     
 
-# Rust Functions - Quick Reference
+## Functions
 
-## Overview
 Functions in Rust are declared with the `fn` keyword and emphasize memory safety through ownership rules.
 
 ## Basic Syntax
