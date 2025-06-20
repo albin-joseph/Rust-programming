@@ -251,3 +251,229 @@ let y: u64 = 42;      // Explicit type annotation
 let z = 42u64;        // Type suffix
 ```
     
+
+# Rust Functions - Quick Reference
+
+## Overview
+Functions in Rust are declared with the `fn` keyword and emphasize memory safety through ownership rules.
+
+## Basic Syntax
+
+```rust
+fn function_name(parameter: Type) -> ReturnType {
+    // function body
+    expression_or_return_statement
+}
+```
+
+## Function Examples
+
+### Simple Function (No Return Value)
+```rust
+fn greet(name: &str) {
+    println!("Hello, {}!", name);
+}
+
+// Usage
+greet("World");
+```
+
+### Function with Return Value
+```rust
+fn add(x: i32, y: i32) -> i32 {
+    x + y  // implicit return (no semicolon)
+}
+
+// Alternative with explicit return
+fn subtract(x: i32, y: i32) -> i32 {
+    return x - y;
+}
+
+// Usage
+let result = add(5, 3);  // result = 8
+```
+
+### Multiple Return Values (Tuples)
+```rust
+fn calculate(x: i32) -> (i32, i32, i32) {
+    (x + 1, x * 2, x * x)
+}
+
+// Usage
+let (incremented, doubled, squared) = calculate(4);
+```
+
+### Generic Functions
+```rust
+fn largest<T: PartialOrd>(list: &[T]) -> &T {
+    let mut largest = &list[0];
+    for item in list {
+        if item > largest {
+            largest = item;
+        }
+    }
+    largest
+}
+
+// Usage with different types
+let numbers = vec![34, 50, 25, 100, 65];
+let result = largest(&numbers);
+
+let chars = vec!['y', 'm', 'a', 'q'];
+let result = largest(&chars);
+```
+
+## Ownership in Functions
+
+### Taking Ownership
+```rust
+fn take_ownership(some_string: String) {
+    println!("{}", some_string);
+} // some_string goes out of scope and is dropped
+```
+
+### Borrowing (Immutable Reference)
+```rust
+fn calculate_length(s: &String) -> usize {
+    s.len()
+} // s goes out of scope, but refers to something else, so nothing happens
+```
+
+### Mutable Borrowing
+```rust
+fn change(some_string: &mut String) {
+    some_string.push_str(", world");
+}
+
+// Usage
+let mut s = String::from("hello");
+change(&mut s);
+```
+
+### Returning References
+```rust
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+    
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+    
+    &s[..]
+}
+```
+
+## Advanced Function Features
+
+### Function Pointers
+```rust
+fn add_one(x: i32) -> i32 {
+    x + 1
+}
+
+fn do_twice(f: fn(i32) -> i32, arg: i32) -> i32 {
+    f(arg) + f(arg)
+}
+
+// Usage
+let answer = do_twice(add_one, 5); // answer = 12
+```
+
+### Closures
+```rust
+let add_one = |x: i32| x + 1;
+let result = add_one(5); // result = 6
+
+// Capturing environment
+let x = 4;
+let equal_to_x = |z| z == x;
+let y = 4;
+assert!(equal_to_x(y));
+```
+
+### Associated Functions (Static Methods)
+```rust
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+impl Rectangle {
+    // Associated function (like static method)
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size,
+        }
+    }
+    
+    // Method (takes &self)
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
+// Usage
+let sq = Rectangle::square(3);  // Associated function
+let area = sq.area();           // Method
+```
+
+## Key Rules & Best Practices
+
+### Return Types
+- If no return type specified, function returns unit type `()`
+- Last expression without semicolon is returned
+- Use `return` keyword for early returns
+
+### Naming Convention
+- Use `snake_case` for function names
+- Be descriptive: `calculate_tax()` not `calc()`
+
+### Error Handling
+```rust
+fn divide(x: f64, y: f64) -> Result<f64, String> {
+    if y == 0.0 {
+        Err(String::from("Cannot divide by zero"))
+    } else {
+        Ok(x / y)
+    }
+}
+
+// Usage
+match divide(10.0, 2.0) {
+    Ok(result) => println!("Result: {}", result),
+    Err(error) => println!("Error: {}", error),
+}
+```
+
+### Documentation
+```rust
+/// Calculates the area of a rectangle.
+/// 
+/// # Examples
+/// 
+/// ```
+/// let area = calculate_area(5, 10);
+/// assert_eq!(area, 50);
+/// ```
+fn calculate_area(width: u32, height: u32) -> u32 {
+    width * height
+}
+```
+
+## Memory Safety Notes
+
+- **No null pointer dereferences**: Use `Option<T>` instead of null
+- **No dangling pointers**: Borrow checker ensures references are valid
+- **No buffer overflows**: Array bounds are checked at runtime
+- **No use after free**: Ownership system prevents this at compile time
+
+## Quick Tips
+
+1. **Prefer borrowing over taking ownership** when possible
+2. **Use `&str` instead of `String`** for function parameters when you only need to read
+3. **Return `Result<T, E>`** for functions that can fail
+4. **Use generics** to write flexible, reusable functions
+5. **Document public functions** with `///` comments
