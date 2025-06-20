@@ -17,6 +17,12 @@ fn main() {
     println!("Length of  '{}' is {}", s1, len);
 
     //In the above s1 is the owner of the string RUST and we are only passing the reference to the function
+
+    //Rule s2
+    let s2 = s1;
+   // println!("values s1: {} and s2: {}", s1, s2);
+    //In the above code s1 value borrowed to s2 after that s1 dropped from the memory.
+    //So if truy to access s1 will throw error
 }
 
 fn calculate_length(s: &String) -> usize {
