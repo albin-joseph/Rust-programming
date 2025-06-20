@@ -23,6 +23,9 @@ fn main() {
    // println!("values s1: {} and s2: {}", s1, s2);
     //In the above code s1 value borrowed to s2 after that s1 dropped from the memory.
     //So if truy to access s1 will throw error
+
+    //Rule3
+    //If we try to do anything outsided the scope will throw error
 }
 
 fn calculate_length(s: &String) -> usize {
