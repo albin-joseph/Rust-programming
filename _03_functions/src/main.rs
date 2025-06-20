@@ -22,3 +22,7 @@ fn get_square_of_int (value: i32) -> i32 {
 fn human_id(name: &str, age: i32, hieght: f64) {
     println!("My name is {}, I have {} years old and my height is {}", name, age, hieght);
 }
+
+//Expression & Statement
+//Expression: anything that returns a value
+//Statement: anything that does not returns a value
