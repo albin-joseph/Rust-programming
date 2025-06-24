@@ -10,4 +10,9 @@ fn main() {
     } else {
          println!("You can't drive a car");
     }
+
+    //Use if in a  let statemaent
+    let condition = true;
+    let number = if condition {5} else {6};
+    println!("Number is {number}");
 }
