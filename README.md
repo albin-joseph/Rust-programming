@@ -529,3 +529,140 @@ let s2 = s1;
 - **Zero-cost abstractions** - no runtime overhead
 - **Compile-time checks** prevent dangling pointers, double-free errors
 - **Predictable performance** - know exactly when memory is freed
+
+
+## Variables
+
+Variables in Rust are immutable by default and must be explicitly declared as mutable when needed. Rust uses static typing with powerful type inference capabilities.
+
+### Variable Declaration
+
+#### Immutable Variables
+```rust
+let x = 5;
+let name = "Alice";
+let is_active = true;
+```
+
+#### Mutable Variables
+```rust
+let mut count = 0;
+count += 1;
+
+let mut message = String::from("Hello");
+message.push_str(", World!");
+```
+
+### Type Annotations
+
+While Rust can infer types, you can explicitly specify them:
+
+```rust
+let x: i32 = 42;
+let pi: f64 = 3.14159;
+let letter: char = 'A';
+let numbers: Vec<i32> = vec![1, 2, 3, 4, 5];
+```
+
+### Constants
+
+Constants are always immutable and must have explicit type annotations:
+
+```rust
+const MAX_USERS: u32 = 1000;
+const PI: f64 = 3.14159265359;
+```
+
+### Shadowing
+
+Rust allows variable shadowing, creating a new variable with the same name:
+
+```rust
+let x = 5;
+let x = x + 1;        // x is now 6
+let x = x * 2;        // x is now 12
+
+// Shadowing can change the type
+let spaces = "   ";
+let spaces = spaces.len();  // spaces is now a number
+```
+
+### Scope and Ownership
+
+Variables have scope determined by the block they're declared in:
+
+```rust
+fn main() {
+    let outer = "I'm in the outer scope";
+    
+    {
+        let inner = "I'm in the inner scope";
+        println!("{}", outer);  // ✅ Can access outer variable
+        println!("{}", inner);  // ✅ Can access inner variable
+    }
+    
+    println!("{}", outer);      // ✅ Still accessible
+    // println!("{}", inner);   // ❌ Error: inner is out of scope
+}
+```
+
+### Common Patterns
+
+#### Destructuring
+```rust
+let tuple = (1, 2, 3);
+let (x, y, z) = tuple;
+
+let array = [1, 2, 3, 4, 5];
+let [first, second, ..] = array;
+```
+
+#### Option and Result Handling
+```rust
+let maybe_number: Option<i32> = Some(42);
+if let Some(number) = maybe_number {
+    println!("Got number: {}", number);
+}
+
+let result: Result<i32, &str> = Ok(10);
+match result {
+    Ok(value) => println!("Success: {}", value),
+    Err(error) => println!("Error: {}", error),
+}
+```
+
+### Best Practices
+
+- **Prefer immutability**: Use `let` by default, only use `mut` when necessary
+- **Use descriptive names**: `user_count` instead of `uc`
+- **Leverage type inference**: Let Rust infer types when context is clear
+- **Use constants for magic numbers**: Define `const` for repeated literal values
+- **Consider shadowing**: Use shadowing for type transformations and value updates
+
+### Examples
+
+```rust
+fn demonstrate_variables() {
+    // Basic variable declaration
+    let language = "Rust";
+    let version = 1.70;
+    let mut popularity_score = 85;
+    
+    // Type annotations when needed
+    let user_ids: Vec<u32> = Vec::new();
+    let temperature: f32 = 23.5;
+    
+    // Constants
+    const MAX_CONNECTIONS: usize = 100;
+    
+    // Shadowing example
+    let input = "123";
+    let input: i32 = input.parse().expect("Not a number!");
+    
+    // Mutable operations
+    popularity_score += 5;
+    
+    println!("Language: {}, Version: {}, Score: {}", 
+             language, version, popularity_score);
+}
+```
