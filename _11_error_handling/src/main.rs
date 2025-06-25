@@ -16,6 +16,13 @@ fn main() {
         Ok(T), //Represents a value
         Err(E), //Represents an error
     }
+
+    match divide_result(100.0,0.0){
+        Ok(result) => println!("Result: {}", result),
+        Err(err) => println!("Error: {}", err),
+    }
+
+
 }
 
 fn divide(numerator: f64, denominator: f64) ->Option<f64> {
@@ -23,5 +30,15 @@ fn divide(numerator: f64, denominator: f64) ->Option<f64> {
         None
     } else {
         Some(numerator / denominator)
+    }
+}
+
+
+
+fn divide_result(numerator: f64, denominator: f64) ->Result<f64, String> {
+    if denominator == 0.0 {
+        Err(String::from("cannot divide by 0"))
+    } else {
+        Ok(numerator / denominator)
     }
 }
