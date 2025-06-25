@@ -15,4 +15,37 @@ fn main() {
     let condition = true;
     let number = if condition {5} else {6};
     println!("Number is {number}");
+
+
+    //Loops
+    let mut counter: i32 = 0;
+
+    let result: i32 = loop {
+        counter += 1;
+
+        if counter == 10 {
+            break counter * 2
+        }
+    };
+
+    println!("The value of result is {result} and counter value is {counter}");
+
+    //While loop
+
+    let mut number: i32 = 3;
+    while number != 0 {
+        println!("{number}");
+        number -= 1;
+    }
+
+    println!("Hey!");
+
+    // for loop
+
+    let number_array: [i32; 5] = [1, 2,3,4,5];
+
+    for element in number_array {
+        println!("Current number is {element}");
+    }
+
 }
