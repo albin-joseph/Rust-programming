@@ -666,3 +666,340 @@ fn demonstrate_variables() {
              language, version, popularity_score);
 }
 ```
+
+## Control Flow
+
+Rust provides several control flow constructs that allow you to control the execution path of your programs. All control flow expressions in Rust can return values, making them more powerful than in many other languages.
+
+### Conditional Statements
+
+#### `if` Expressions
+
+```rust
+let number = 6;
+
+if number % 4 == 0 {
+    println!("number is divisible by 4");
+} else if number % 3 == 0 {
+    println!("number is divisible by 3");
+} else if number % 2 == 0 {
+    println!("number is divisible by 2");
+} else {
+    println!("number is not divisible by 4, 3, or 2");
+}
+```
+
+#### `if` as Expression
+
+Since `if` is an expression, you can use it to assign values:
+
+```rust
+let condition = true;
+let number = if condition { 5 } else { 6 };
+
+let x = 10;
+let result = if x > 5 {
+    "greater than 5"
+} else {
+    "less than or equal to 5"
+};
+```
+
+### Loops
+
+#### `loop` - Infinite Loop
+
+```rust
+let mut counter = 0;
+
+let result = loop {
+    counter += 1;
+    
+    if counter == 10 {
+        break counter * 2;  // Return value from loop
+    }
+};
+
+println!("The result is {}", result);  // Output: 20
+```
+
+#### `while` Loop
+
+```rust
+let mut number = 3;
+
+while number != 0 {
+    println!("{}!", number);
+    number -= 1;
+}
+
+println!("LIFTOFF!!!");
+```
+
+#### `for` Loop
+
+```rust
+// Iterating over a range
+for number in 1..4 {
+    println!("{}!", number);
+}
+
+// Iterating over a collection
+let a = [10, 20, 30, 40, 50];
+for element in a {
+    println!("the value is: {}", element);
+}
+
+// Iterating with index
+for (index, value) in a.iter().enumerate() {
+    println!("Index: {}, Value: {}", index, value);
+}
+```
+
+### Pattern Matching
+
+#### `match` Expression
+
+The `match` expression is Rust's most powerful control flow construct:
+
+```rust
+let dice_roll = 9;
+
+match dice_roll {
+    3 => add_fancy_hat(),
+    7 => remove_fancy_hat(),
+    other => move_player(other),
+}
+
+fn add_fancy_hat() {}
+fn remove_fancy_hat() {}
+fn move_player(num_spaces: u8) {}
+```
+
+#### Matching with Values
+
+```rust
+let x = 1;
+
+match x {
+    1 => println!("one"),
+    2 => println!("two"),
+    3 => println!("three"),
+    _ => println!("anything else"),  // _ is a catch-all pattern
+}
+```
+
+#### Matching Ranges
+
+```rust
+let x = 5;
+
+match x {
+    1..=5 => println!("one through five"),
+    _ => println!("something else"),
+}
+```
+
+#### Matching Enums
+
+```rust
+enum Message {
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(i32, i32, i32),
+}
+
+fn process_message(msg: Message) {
+    match msg {
+        Message::Quit => {
+            println!("The Quit variant has no data to destructure.")
+        }
+        Message::Move { x, y } => {
+            println!("Move in the x direction {} and in the y direction {}", x, y);
+        }
+        Message::Write(text) => println!("Text message: {}", text),
+        Message::ChangeColor(r, g, b) => {
+            println!("Change the color to red {}, green {}, and blue {}", r, g, b)
+        }
+    }
+}
+```
+
+### Conditional Control Flow
+
+#### `if let` Expression
+
+Concise way to match against one pattern:
+
+```rust
+let some_u8_value = Some(0u8);
+
+if let Some(3) = some_u8_value {
+    println!("three");
+} else {
+    println!("not three");
+}
+
+// More practical example
+let config_max = Some(3u8);
+if let Some(max) = config_max {
+    println!("The maximum is configured to be {}", max);
+}
+```
+
+#### `while let` Loop
+
+```rust
+let mut stack = Vec::new();
+
+stack.push(1);
+stack.push(2);
+stack.push(3);
+
+while let Some(top) = stack.pop() {
+    println!("{}", top);
+}
+```
+
+### Loop Control
+
+#### `break` and `continue`
+
+```rust
+let mut count = 0;
+
+'counting_up: loop {
+    println!("count = {}", count);
+    let mut remaining = 10;
+
+    loop {
+        println!("remaining = {}", remaining);
+        if remaining == 9 {
+            break;  // Break inner loop
+        }
+        if count == 2 {
+            break 'counting_up;  // Break outer loop with label
+        }
+        remaining -= 1;
+    }
+
+    count += 1;
+}
+```
+
+#### Returning Values from Loops
+
+```rust
+let mut counter = 0;
+
+let result = loop {
+    counter += 1;
+    
+    if counter == 10 {
+        break counter * 2;
+    }
+};
+
+println!("The result is {}", result);
+```
+
+### Advanced Patterns
+
+#### Guards in Match
+
+```rust
+let num = Some(4);
+
+match num {
+    Some(x) if x < 5 => println!("less than five: {}", x),
+    Some(x) => println!("{}", x),
+    None => (),
+}
+```
+
+#### Multiple Patterns
+
+```rust
+let x = 1;
+
+match x {
+    1 | 2 => println!("one or two"),
+    3 => println!("three"),
+    _ => println!("anything else"),
+}
+```
+
+#### Destructuring Structs
+
+```rust
+struct Point {
+    x: i32,
+    y: i32,
+}
+
+let p = Point { x: 0, y: 7 };
+
+match p {
+    Point { x, y: 0 } => println!("On the x axis at {}", x),
+    Point { x: 0, y } => println!("On the y axis at {}", y),
+    Point { x, y } => println!("On neither axis: ({}, {})", x, y),
+}
+```
+
+### Best Practices
+
+- **Use `match` for exhaustive pattern matching**: Prefer `match` over multiple `if` statements when dealing with enums
+- **Leverage `if let` for single pattern matches**: More concise than `match` when you only care about one case
+- **Use meaningful loop labels**: When using nested loops, label them descriptively
+- **Prefer `for` loops over `while` for iteration**: More idiomatic and less error-prone
+- **Take advantage of expression nature**: Use control flow expressions to assign values directly
+
+### Examples
+
+```rust
+fn control_flow_examples() {
+    // Complex conditional logic
+    let temperature = 25;
+    let weather = match temperature {
+        t if t < 0 => "freezing",
+        0..=15 => "cold",
+        16..=25 => "mild",
+        26..=35 => "warm",
+        _ => "hot",
+    };
+    println!("It's {} today", weather);
+    
+    // Processing a collection
+    let numbers = vec![1, 2, 3, 4, 5];
+    for (index, &number) in numbers.iter().enumerate() {
+        match number % 2 {
+            0 => println!("Index {}: {} is even", index, number),
+            _ => println!("Index {}: {} is odd", index, number),
+        }
+    }
+    
+    // Option handling
+    let maybe_name = Some("Alice");
+    if let Some(name) = maybe_name {
+        println!("Hello, {}!", name);
+    }
+    
+    // Loop with early exit
+    let mut attempts = 0;
+    let target = 7;
+    
+    let found = loop {
+        attempts += 1;
+        let guess = attempts * 2 + 1;
+        
+        if guess == target {
+            break true;
+        } else if attempts >= 5 {
+            break false;
+        }
+    };
+    
+    println!("Found target: {}", found);
+}
+```
