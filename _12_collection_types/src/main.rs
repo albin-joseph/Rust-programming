@@ -16,4 +16,11 @@ fn main() {
 
       let third: &i32 = &_v[2]; 
       println!("The third element in _v:{third}");
+
+     let third = _v.get(2);
+
+     match third {
+         Some(third) => println!("The third element for GET method is {third}"),
+         None => println!("There is no third lement")
+     }
 }
