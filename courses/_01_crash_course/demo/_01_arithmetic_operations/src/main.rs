@@ -7,6 +7,10 @@ fn main() {
     println!("Sum: {}, Substarction: {}, divison: {}, multiplication: {}", sum, value, div_result, mult);
 
     println!("Sum: {}, Substarction: {}, divison: {}, multiplication: {}", addition(1,2), substraction(4,3), division(3,2), multiplication(5,2));
+
+    let rem = 5%3;
+
+    println!("Remainder: {}", rem);
 }
 
 
