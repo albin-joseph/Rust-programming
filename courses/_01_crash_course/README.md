@@ -106,3 +106,12 @@
 - Makes working with data easier
     - Similar data can be grouped together
 - Filed can be accessed using a dot (.)
+
+## Fundamentals | Tuples
+- A type of "record"
+- Store data anonymously
+    - No need to name fields
+- Useful to return pairs of data from functions
+    - Use struct when more that 2 or 3 variables
+- Can be "destructured" easily into variables
+- Usefule when destructing
