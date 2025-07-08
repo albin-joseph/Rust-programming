@@ -122,3 +122,33 @@
 - Expression values coalesce to a single point
     - Can be used for nesting logic
 - Expression allow nested logic
+
+## Fundamentals | Intermediate Memory
+- Basic memory refresh
+    - Memory is stored using binary
+        - Bits: 0 or 1
+    - Computer optimized for bytes
+        - 1 byte == 8 contiguous bits
+    - Fully contiguous
+- Addresses
+    - All data in memory has an "address"
+        - Used to locate data
+        - Always the same - only data changes
+    - Usually don't utilize addresses directly
+        - Variables handle most of the work
+- Offsets
+    - Items can be located at an address using an "offset"
+    - Offsets begin at o
+    - Represent the number of bytes away from the original address
+        - Normally deal with indexes instead
+
+## Fundamentals | Ownership
+- Programs must track memory
+    - If they fail to do so, a "leak" occurs
+    - Memory must be managed in some way to prevent leaks
+- Rust utilizes an "ownership" model to manage memory
+    - The "owner" of memory is responsible for cleaning up the memory
+    - This occurs automatically at the end of the scope
+- Memory can either be "moved" or "borrowed"
+    - Default behavior is to "move" memory to a new owner
+    - Use an ampersand (&) to allow code to "borrow"
