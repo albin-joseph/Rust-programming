@@ -115,3 +115,10 @@
     - Use struct when more that 2 or 3 variables
 - Can be "destructured" easily into variables
 - Usefule when destructing
+
+## Fundamentals | Expressions
+- Rust is an expression-based language
+    - Most things are evaluated and return some value
+- Expression values coalesce to a single point
+    - Can be used for nesting logic
+- Expression allow nested logic
