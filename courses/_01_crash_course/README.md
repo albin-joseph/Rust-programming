@@ -74,3 +74,9 @@
     - While loop
     - Infinite loop
 - Both types of loops can exit using "break"
+
+## Fundamentals | Match expressions
+- Add logic to programs
+- Similar to if..elese
+- Exhaustive
+    - All options must be accounted
