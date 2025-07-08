@@ -97,3 +97,4 @@
     -  Each possibility is called a "variant"
 - Provides information about your program to the compiler
     - More robust programs
+- Make program code to more readable
