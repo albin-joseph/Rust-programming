@@ -156,3 +156,10 @@
 ## Fundamentals | Impl
 - impl blocks can be split into multiple blocks for the same struct.
 - You can also use generics inside impl.
+
+## Data Structures | Vector
+- Multiple pieces of data
+    - Must be the same type
+- Used for lists of information
+- Can add, remove, and traverse the entries
+- Vector declare with a macro vec!
