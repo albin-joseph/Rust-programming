@@ -162,4 +162,5 @@
     - Must be the same type
 - Used for lists of information
 - Can add, remove, and traverse the entries
-- Vector declare with a macro vec!
+- The vec! macro can be used to make vectors
+- Use for.. in to iterate through items of a vector
