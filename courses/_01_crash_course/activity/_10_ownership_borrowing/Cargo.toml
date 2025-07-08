@@ -1,0 +1,6 @@
+[package]
+name = "_10_ownership_borrowing"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
