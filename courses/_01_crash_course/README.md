@@ -105,3 +105,4 @@
 - Each piece of data is called a "field"
 - Makes working with data easier
     - Similar data can be grouped together
+- Filed can be accessed using a dot (.)
