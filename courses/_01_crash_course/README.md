@@ -80,3 +80,10 @@
 - Similar to if..elese
 - Exhaustive
     - All options must be accounted
+- Use underscore (_) to match "anything else"
+
+>**Match Vs else..if**
+>- match will be checked by the compiler
+>- If a new possibility is added, you will be notified when this occurs
+>- else..if is not checked by compiler
+>- If a new possibility is added, your code may contain a bug

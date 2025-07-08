@@ -15,4 +15,13 @@ fn main() {
         3 => println!("Its 3"),
         _ => println!("Its something else")
     }
+
+    let my_name = "albin";
+    match my_name {
+        "albin" => println!("That is my name"),
+        "anu" => println!("Hi anu"),
+        "emmanuel" => println!("Hello emmanuel"),
+        "rebecca" => println!("Hello rebecca"),
+        _=>println!("nice to meet you")
+    }
 }
