@@ -98,3 +98,10 @@
 - Provides information about your program to the compiler
     - More robust programs
 - Make program code to more readable
+
+## Fundamentals | Structure
+- A type that contains multiple pieces of data
+    -  All or nothing - cannot have some pieces of data and not others
+- Each piece of data is called a "field"
+- Makes working with data easier
+    - Similar data can be grouped together
