@@ -89,4 +89,11 @@
 >- If a new possibility is added, your code may contain a bug
 
 ## Fundamentals | Repetition using while
+- loop declared with the keyword while
+- which check the condition is satisfying, after that execute the espressions
 
+## Fundamentals | Enumeration
+- Data that can be one of multiple different possibilities
+    -  Each possibility is called a "variant"
+- Provides information about your program to the compiler
+    - More robust programs
