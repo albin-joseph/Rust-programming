@@ -152,3 +152,7 @@
 - Memory can either be "moved" or "borrowed"
     - Default behavior is to "move" memory to a new owner
     - Use an ampersand (&) to allow code to "borrow"
+
+## Fundamentals | Impl
+- impl blocks can be split into multiple blocks for the same struct.
+- You can also use generics inside impl.
