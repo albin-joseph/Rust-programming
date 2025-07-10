@@ -164,3 +164,10 @@
 - Can add, remove, and traverse the entries
 - The vec! macro can be used to make vectors
 - Use for.. in to iterate through items of a vector
+
+## Data Structures | String
+- Two commonly used types of strings
+    - String - owned
+    - &str - borrowed String slice
+- Must use an owned String to store
+- Use &str when passing to a function
