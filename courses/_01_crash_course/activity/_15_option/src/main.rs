@@ -8,11 +8,13 @@
 // * Use a struct containing the student's name and locker assignment
 // * The locker assignment should use an Option‹ i32>
 
+/// Student struct
 struct Student {
     name: String,
     locker: Option<i32>
 }
 
+///Main function
 fn main() {
     println!("<=============== Option ===============>");
 
@@ -26,6 +28,7 @@ fn main() {
         locker: None
     };
 
+    //Implemntation
     println!("Student name: {:?}", s1_locker.name);
     match s1_locker.locker {
         Some(locker) => println!("Locker key: {:?}", locker),
