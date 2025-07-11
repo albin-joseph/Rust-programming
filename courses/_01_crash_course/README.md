@@ -157,6 +157,15 @@
 - impl blocks can be split into multiple blocks for the same struct.
 - You can also use generics inside impl.
 
+## Fundamentals | Type Annotations
+- Required for function signatures
+- Types are usually inferred
+- Can also be specified in code
+    - Explicit type annoatations
+- Type annotations are mostly optional within function bodies
+    -  Occasionally required if compiler cannot infer the type
+- Can be specified when using let bindings
+
 ## Data Structures | Vector
 - Multiple pieces of data
     - Must be the same type
