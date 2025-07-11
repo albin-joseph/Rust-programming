@@ -98,6 +98,10 @@
 - Provides information about your program to the compiler
     - More robust programs
 - Make program code to more readable
+- enum variants can optionally contain data
+- The data can be another enum
+- Can mix plain identifiers and data-containing variants within the same enum
+- More than one piece of data can be associated with a variant
 
 ## Fundamentals | Structure
 - A type that contains multiple pieces of data
