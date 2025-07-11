@@ -169,5 +169,7 @@
 - Two commonly used types of strings
     - String - owned
     - &str - borrowed String slice
+    - Strings are automatically borrowed
+- Use to_owned() or String:: from() to create an owned copy of a string slice
 - Must use an owned String to store
 - Use &str when passing to a function
