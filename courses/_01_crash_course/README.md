@@ -186,3 +186,13 @@
 - Use to_owned() or String:: from() to create an owned copy of a string slice
 - Must use an owned String to store
 - Use &str when passing to a function
+
+## Working With Data | Option
+- A type that may be one of two things
+    - Some data of a specified type
+    - Nothing
+- Used in scenarios where data may not be required or is unavailable
+    - Unable to find something
+    - Ran out of items in a list
+    - Form field not filled out
+- Use `Option<type>` to declare an optional type
