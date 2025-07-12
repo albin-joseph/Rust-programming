@@ -22,7 +22,7 @@ struct Adult {
 }
 
 impl Adult {
-    fn new (name: &str, age: i32) -> Result<Self, String> {
+    fn new (name: &str, age: i32) -> Result<Self, &str> {
         if age >= 21 {
             return Ok(Self {
                 name: name.to_string(),
