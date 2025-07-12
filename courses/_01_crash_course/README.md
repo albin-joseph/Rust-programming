@@ -196,3 +196,25 @@
     - Ran out of items in a list
     - Form field not filled out
 - Use `Option<type>` to declare an optional type
+
+## Working With Data | Result
+- A data type that contains one of two types of data:
+    - "Successful" data
+    - "Error" data
+- Used in scenarios where an action needs to be taken, but has the possibility of failure
+    - Copying a file
+    - Connecting to a website
+- Result represents either success or failure
+    - Ok (variable_name)
+        - The operation was completed
+    - Err (variable_name)
+        - The operation failed
+- Useful when working with functionality that can potentially fail
+- Use Result<T, E> when working with
+
+    ```
+        enum Result<T, E> {
+            Ok(T),
+            Err(E)
+        }
+    ```
