@@ -187,7 +187,7 @@
 - Must use an owned String to store
 - Use &str when passing to a function
 
-## Data Structures | Hashmap
+## Data Structures | HashMap
 - Collection that stores data as key-value pairs
     - Data is located using the "key"
     - The data is the "value"
