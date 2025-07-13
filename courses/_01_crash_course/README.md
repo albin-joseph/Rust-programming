@@ -187,6 +187,13 @@
 - Must use an owned String to store
 - Use &str when passing to a function
 
+## Data Structures | Hashmap
+- Collection that stores data as key-value pairs
+    - Data is located using the "key"
+    - The data is the "value"
+- Similar to definitions in a dictionary
+- Very fast to retrieve data using the key
+
 ## Working With Data | Option
 - A type that may be one of two things
     - Some data of a specified type
