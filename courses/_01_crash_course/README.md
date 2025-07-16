@@ -170,6 +170,28 @@
     -  Occasionally required if compiler cannot infer the type
 - Can be specified when using let bindings
 
+## Fundamentals | Crates & Modules
+- Crate is the compilation unit
+    - A crate is the smallest unit of code compiled by Rust. Every project is a crate (either binary or library).
+- Binary vs Library crates
+    - Binary crates have a main.rs file and produce executables.
+    - Library crates use lib.rs and provide reusable code.
+- Modules organize code inside crates
+    - Use mod to declare a module.
+    - Modules help break large programs into smaller, manageable files.
+- Files and folders reflect module structure
+    - A module can be defined inline or in a separate file.
+    - mod foo; looks for foo.rs or foo/mod.rs.
+- Accessing code with use
+    - Bring module content into scope using use path::to::item;.
+    - Makes calling functions or structs from modules easier.
+- Control visibility with pub
+    - Items are private by default.
+    - Use pub to make modules, functions, or structs accessible outside their scope.
+- Cargo manages dependencies and crates
+    - Use Cargo.toml to define dependencies.
+    - External crates are imported with extern crate (older) or just use (modern practice).
+
 ## Data Structures | Vector
 - Multiple pieces of data
     - Must be the same type
